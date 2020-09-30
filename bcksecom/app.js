@@ -7,8 +7,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var apiRouter = require('./routes/api');
 
-var apiRouter = require('./routes/api'); //creamos que busque la ruta
 var app = express();
 
 // view engine setup
@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //Controladores----
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/api',apiRouter);
+app.use('/api', apiRouter);
 
 
 // catch 404 and forward to error handler

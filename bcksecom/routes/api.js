@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 //Para que necesito el router?
 //Es el mecanismo que permite registra rutas y controladores(handler)
@@ -29,11 +29,18 @@ var router = express.Router();
  *      MIDDLEWARES
  */
 router.get('/version', (req, res)=>{
- let versionOb={
+ let versionObj={
      app:"Simple Ecomerce SECOM API",
      version:"0.0.0.1",
-     state:"alpha"
+     state:"alpha Omega"
  }
- res.status(200).json(versionOb);
-
+ res.status(200).json(versionObj); 
 });
+
+router.get('/param/:edad',(req,res)=>{
+    var edad=parseInt(req.params.edad);
+    res.status(200).json({"edad":edad});
+});//get param
+
+
+module.exports = router; //importante agregar 
