@@ -28,12 +28,12 @@ const router = express.Router();
  * 
  *      MIDDLEWARES
  */
-const productosRoutes = require('./api/productos'); //asi instancio
+const productosRoutes = require('./api/productosdb'); //asi instancio
 router.get('/version', (req, res)=>{
  let versionObj={
      app:"Simple Ecomerce SECOM API",
      version:"0.0.0.1",
-     state:"alpha Omega"
+     state:"alpha"
  }
  res.status(200).json(versionObj); 
 });
