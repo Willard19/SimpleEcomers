@@ -28,6 +28,7 @@ const router = express.Router();
  * 
  *      MIDDLEWARES
  */
+const productosRoutes = require('./api/productos'); //asi instancio
 router.get('/version', (req, res)=>{
  let versionObj={
      app:"Simple Ecomerce SECOM API",
@@ -37,10 +38,48 @@ router.get('/version', (req, res)=>{
  res.status(200).json(versionObj); 
 });
 
+router.use('/productos', productosRoutes)//para correr todo de la API 
+
+
+
 router.get('/param/:edad',(req,res)=>{
     var edad=parseInt(req.params.edad);
     res.status(200).json({"edad":edad});
+
+
 });//get param
 
+
+
+router.post('/new',(req,res)=>
+{
+//$post datos del formulario http
+
+//let msg= req.body.msg;
+let {msg} =req.body; //53 y 54 son lo mismo
+res.status(200).json({"mensaje":msg});
+    
+}); //new post man
+
+
+//aactualizar
+router.put('/update/:id',(req,res)=>{
+let{id}=req.params;
+id=parseInt(id);
+let{edad}=req.body;
+
+res.status(200).json({id,edad});
+
+});
+
+
+//Borrar
+router.delete('/delete/:id', (req,res)=>{
+let {id} = req.params;
+id = Number(id);
+
+res.status(200).json({id});
+
+});
 
 module.exports = router; //importante agregar 
